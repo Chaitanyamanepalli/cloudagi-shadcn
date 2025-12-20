@@ -1,58 +1,94 @@
 "use client"
 
-import { CheckCircle2Icon } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { SectionGlow } from "@/components/ui/section-glow"
+import { DotGrid } from "@/components/ui/dot-grid"
 
 const steps = [
     {
-        number: "01",
-        title: "Discovery & Analysis",
-        description: "We analyze your internal workflows to identify high-value automation targets.",
+        title: "Discovery Call",
+        time: "30-60 min",
+        description: "Understand your problem and goals. Assess if AI agents are the right solution.",
+        status: "RUNNING",
     },
     {
-        number: "02",
-        title: "Agent Architecture",
-        description: "We design a multi-agent system tailored to your specific tools and data sources.",
+        title: "Strategy Session",
+        time: "1-2 hours",
+        description: "Map your workflows and requirements. Recommend tech stack and approach.",
+        status: "PENDING",
     },
     {
-        number: "03",
-        title: "Deployment & Integration",
-        description: "Seamlessly integrate agents into your CI/CD pipelines or Slack workspaces.",
+        title: "Prototype Development",
+        time: "2-3 weeks",
+        description: "Build working POC with core functionality. Iterate based on your feedback.",
+        status: "PENDING",
+    },
+    {
+        title: "Refinement & Deployment",
+        time: "2-4 weeks",
+        description: "Optimize performance and UX. Integrate and deploy to production.",
+        status: "PENDING",
+    },
+    {
+        title: "Support & Iteration",
+        time: "Ongoing",
+        description: "Monitor performance metrics. Continuous improvement based on usage.",
+        status: "PENDING",
     },
 ]
 
 export function Process() {
     return (
-        <section id="process" className="py-32 border-t border-white/5 bg-background relative">
-            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-purple-500/5 blur-[100px] rounded-full pointer-events-none" />
-
+        <section id="process" className="py-32 bg-background relative overflow-hidden">
+            <DotGrid dotSize={1.5} dotColor="rgba(34, 197, 94, 0.15)" spacing={25} />
+            <SectionGlow position="right" color="#10B981" intensity={0.2} />
             <div className="container px-4 md:px-6 mx-auto relative z-10">
-                <div className="flex flex-col md:flex-row gap-16 items-start justify-between max-w-7xl mx-auto">
-                    <div className="md:w-1/3 sticky top-32">
-                        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
-                            How We Build
-                        </h2>
-                        <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-sm">
-                            We define a clear path from manual drudgery to automated efficiency. Our process is iterative, transparent, and security-focused.
-                        </p>
-                        <div className="flex items-center gap-3 text-sm font-medium text-white/80 bg-white/5 w-fit px-4 py-2 rounded-full border border-white/10">
-                            <CheckCircle2Icon className="w-4 h-4 text-green-500" />
-                            <span>SOC2 Compliant Process</span>
-                        </div>
-                    </div>
+                <div className="text-center mb-24">
+                    <Badge variant="outline" className="mb-6 text-primary border-primary/20 bg-primary/5 px-4 py-1.5 rounded-full">
+                        How We Work
+                    </Badge>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+                        Enterprise-Grade Implementation
+                    </h2>
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                        A systematic, SOC2-compliant approach to deploying autonomous intelligence within your organization.
+                    </p>
+                </div>
 
-                    <div className="md:w-2/3 grid gap-12">
-                        {steps.map((step, index) => (
-                            <div key={index} className="relative pl-12 md:pl-16 border-l border-white/10 py-4 group">
-                                <div className="absolute left-0 top-6 -translate-x-1/2 w-4 h-4 bg-background border-2 border-primary rounded-full group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
-                                <span className="text-8xl font-bold text-white/[0.03] absolute -top-8 right-0 pointer-events-none select-none group-hover:text-white/[0.08] transition-colors duration-500">
-                                    {step.number}
-                                </span>
-                                <h3 className="text-2xl font-bold text-foreground mb-3">{step.title}</h3>
-                                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                                    {step.description}
-                                </p>
-                            </div>
-                        ))}
+                <div className="max-w-4xl mx-auto">
+                    <div className="bg-[#020617] rounded-xl border border-white/5 shadow-2xl overflow-hidden font-mono text-sm">
+                        <div className="h-10 bg-white/5 border-b border-white/5 flex items-center px-4 gap-1.5 flex-shrink-0">
+                            <div className="w-3 h-3 rounded-full bg-destructive/50" />
+                            <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                            <div className="w-3 h-3 rounded-full bg-primary/50" />
+                            <span className="ml-3 text-[10px] text-muted-foreground/60 uppercase tracking-widest">engagement-protocol.log</span>
+                        </div>
+                        <div className="p-8 space-y-8">
+                            {steps.map((step, index) => (
+                                <div key={index} className="flex gap-6 group">
+                                    <div className="flex flex-col items-center">
+                                        <div className={`w-2 h-2 rounded-full mt-1.5 ${step.status === 'RUNNING' ? 'bg-primary animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]' : 'bg-muted/40'}`} />
+                                        {index !== steps.length - 1 && <div className="w-px flex-1 bg-white/5 my-2" />}
+                                    </div>
+                                    <div className="flex-1 pb-2">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                                            <h4 className={`text-base font-bold transition-colors group-hover:text-primary ${step.status === 'RUNNING' ? 'text-primary' : 'text-foreground/80'}`}>
+                                                STP-{index + 1}: {step.title}
+                                            </h4>
+                                            <div className="flex items-center gap-3">
+                                                <span className="text-[10px] text-muted-foreground/40 font-mono">[{step.time}]</span>
+                                                <span className={`text-[9px] px-1.5 py-0.5 rounded border ${step.status === 'RUNNING' ? 'border-primary/30 text-primary bg-primary/5' : 'border-white/5 text-muted-foreground/30'}`}>
+                                                    {step.status}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <p className="text-muted-foreground leading-relaxed text-xs">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

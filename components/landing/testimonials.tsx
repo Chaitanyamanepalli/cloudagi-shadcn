@@ -1,8 +1,10 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { QuoteIcon, StarIcon } from "lucide-react"
+import { StarIcon } from "lucide-react"
+import { SectionGlow } from "@/components/ui/section-glow"
+import { DotGrid } from "@/components/ui/dot-grid"
 
 const testimonials = [
     {
@@ -27,44 +29,44 @@ const testimonials = [
 
 export function Testimonials() {
     return (
-        <section className="py-32 bg-background relative">
-            <div className="absolute inset-0 bg-grid-small-white/[0.05] -z-10" />
-
-            <div className="container px-4 md:px-6 mx-auto">
-                <div className="text-center mb-16">
-                    <Badge variant="outline" className="mb-4 text-muted-foreground border-white/10">Testimonials</Badge>
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/60">
-                        Loved by Engineering Teams
+        <section id="testimonials" className="py-32 bg-background relative overflow-hidden">
+            <DotGrid dotSize={1.5} dotColor="rgba(34, 197, 94, 0.15)" spacing={25} />
+            <SectionGlow position="center" color="#4ADE80" intensity={0.15} />
+            <div className="container px-4 md:px-6 mx-auto relative z-10">
+                <div className="text-center mb-24">
+                    <Badge variant="outline" className="mb-6 text-primary border-primary/20 bg-primary/5 px-4 py-1.5 rounded-full">
+                        Wall of Love
+                    </Badge>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+                        Trusted by Engineering Leaders
                     </h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                        See how teams are transforming their workflows with intelligent automation.
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                        See how top teams are scaling their output with CloudAGI autonomous agents.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     {testimonials.map((testimonial, index) => (
-                        <Card key={index} className="relative overflow-hidden border-white/10 bg-white/5 hover:border-primary/30 transition-all duration-300 group">
-                            <CardContent className="p-8">
-                                <QuoteIcon className="w-10 h-10 text-primary/20 mb-4" />
-
-                                <div className="flex gap-1 mb-4">
-                                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                                        <StarIcon key={i} className="w-4 h-4 fill-primary text-primary" />
+                        <Card key={index} className="border-border bg-card/40 hover:bg-card/60 p-2 rounded-xl transition-all duration-300 backdrop-blur-sm">
+                            <CardHeader className="p-8 pb-4">
+                                <div className="flex gap-1 mb-6">
+                                    {[...Array(5)].map((_, i) => (
+                                        <StarIcon key={i} className="w-4 h-4 fill-[#22C55E] text-[#22C55E]" />
                                     ))}
                                 </div>
-
-                                <p className="text-foreground/90 leading-relaxed mb-6 text-base">
+                                <blockquote className="text-lg text-foreground leading-relaxed mb-6 font-medium italic">
                                     "{testimonial.quote}"
-                                </p>
-
-                                <div className="border-t border-white/10 pt-4">
-                                    <div className="font-semibold text-foreground">{testimonial.author}</div>
+                                </blockquote>
+                            </CardHeader>
+                            <CardContent className="p-8 pt-0 flex items-center gap-4">
+                                <div className="h-12 w-12 rounded-full bg-accent flex items-center justify-center text-primary font-bold border-2 border-accent">
+                                    {testimonial.author[0]}
+                                </div>
+                                <div>
+                                    <div className="font-bold text-foreground">{testimonial.author}</div>
                                     <div className="text-sm text-muted-foreground">{testimonial.role}</div>
                                 </div>
                             </CardContent>
-
-                            {/* Hover gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                         </Card>
                     ))}
                 </div>

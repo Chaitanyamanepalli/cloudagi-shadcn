@@ -2,38 +2,57 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { SectionGlow } from "@/components/ui/section-glow"
+import { DotGrid } from "@/components/ui/dot-grid"
 
-const stats = [
-    { value: "10K+", label: "Lines of Code Automated" },
-    { value: "500+", label: "Hours Saved Monthly" },
-    { value: "99.9%", label: "Uptime Guarantee" },
-    { value: "24/7", label: "Agent Availability" },
+const differentiators = [
+    {
+        title: "Pragmatic, Not Hype-Driven",
+        description: "We recommend what works for your business, not what's trending on social media. Stability first.",
+        metric: "10x",
+        label: "Performance Jump",
+    },
+    {
+        title: "Transparent Process",
+        description: "You'll understand exactly how your agent works. No black boxes, no vendor lock-in, just results.",
+        metric: "24/7",
+        label: "Autonomous Ops",
+    },
+    {
+        title: "Fast Turnaround",
+        description: "POCs in 2-3 weeks, MVPs in 4-8 weeks. We move at the speed of your startup.",
+        metric: "500+",
+        label: "Agents Deployed",
+    },
 ]
 
-export function Stats() {
+export default function Stats() {
     return (
-        <section className="py-20 border-y border-white/5 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
-            {/* Background accent */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
-
+        <section id="why-us" className="py-24 bg-background border-t border-white/5 relative overflow-hidden">
+            <DotGrid dotSize={1.5} dotColor="rgba(34, 197, 94, 0.15)" spacing={25} />
+            <SectionGlow position="left" color="#22C55E" intensity={0.25} />
             <div className="container px-4 md:px-6 mx-auto relative z-10">
-                <div className="text-center mb-12">
-                    <Badge variant="outline" className="mb-4 text-muted-foreground border-white/10">Proven Results</Badge>
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                        Trusted by Forward-Thinking Teams
-                    </h2>
+                <div className="text-center mb-16">
+                    <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">Why CloudAGI</h2>
+                    <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+                        Built by AI Engineers, <br />
+                        <span className="italic opacity-80 font-serif">For Real Businesses</span>
+                    </h3>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-6xl mx-auto">
-                    {stats.map((stat, index) => (
-                        <div key={index} className="text-center group">
-                            <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-                                {stat.value}
+                <div className="grid md:grid-cols-3 gap-12">
+                    {differentiators.map((item, index) => (
+                        <div key={index} className="flex flex-col items-center text-center group">
+                            <div className="text-primary text-5xl font-bold mb-4 font-mono group-hover:scale-110 transition-transform duration-500">
+                                {item.metric}
                             </div>
-                            <Separator className="my-3 bg-white/10 mx-auto w-12" />
-                            <div className="text-sm md:text-base text-muted-foreground">
-                                {stat.label}
+                            <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-6 px-3 py-1 bg-white/5 rounded-full border border-white/5">
+                                {item.label}
                             </div>
+                            <h4 className="text-xl font-bold mb-3 text-foreground italic">{item.title}</h4>
+                            <p className="text-muted-foreground leading-relaxed text-sm max-w-xs">
+                                {item.description}
+                            </p>
                         </div>
                     ))}
                 </div>
