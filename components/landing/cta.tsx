@@ -4,12 +4,20 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { SparklesIcon, ZapIcon, GlobeIcon, ArrowRightIcon } from "lucide-react"
 import { DotGrid } from "@/components/ui/dot-grid"
+import { useScrollReveal } from "@/lib/use-scroll-reveal"
 
 export default function CTA() {
+    const { ref: ctaRef, isVisible } = useScrollReveal<HTMLDivElement>()
+
     return (
         <section id="contact" className="py-24 bg-background relative overflow-hidden border-t border-border">
             <DotGrid dotSize={1.5} dotColor="rgba(34, 197, 94, 0.15)" spacing={25} />
-            <div className="container px-4 md:px-6 mx-auto relative z-10 text-center">
+            <div
+                ref={ctaRef}
+                className={`container px-4 md:px-6 mx-auto relative z-10 text-center transition duration-700 ease-out ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                }`}
+            >
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
                         Ready to Build Your <span className="text-primary italic">AI Agent?</span>
@@ -42,9 +50,9 @@ export default function CTA() {
                                         placeholder="Enter your work email"
                                         className="bg-background/50 border-white/5 focus-visible:ring-primary/50 h-12 flex-1"
                                     />
-                                    <Button className="h-12 px-8 bg-primary text-primary-foreground hover:bg-primary/90 font-bold group">
+                                    <Button className="h-12 px-8 bg-primary text-primary-foreground hover:bg-primary/90 font-bold group relative overflow-hidden transition-transform duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_0_0_rgba(6,182,212,0.0)] hover:shadow-[0_12px_30px_rgba(6,182,212,0.35)]">
                                         Schedule Consultation
-                                        <ArrowRightIcon className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        <ArrowRightIcon className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                                     </Button>
                                 </div>
                             </div>

@@ -50,7 +50,7 @@ export function Services() {
     return (
         <section id="services" className="py-32 bg-background relative overflow-hidden">
             <DotGrid dotSize={1.5} dotColor="rgba(34, 197, 94, 0.15)" spacing={25} />
-            <FloatingShapes count={8} color="#22C55E" />
+            <FloatingShapes count={8} color="#06B6D4" />
             <div className="container px-4 md:px-6 mx-auto relative z-10">
                 <div className="text-center mb-24">
                     <Badge variant="outline" className="mb-6 text-primary border-primary/20 bg-primary/5 px-4 py-1.5 rounded-full">

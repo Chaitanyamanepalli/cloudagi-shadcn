@@ -31,7 +31,7 @@ export function Testimonials() {
     return (
         <section id="testimonials" className="py-32 bg-background relative overflow-hidden">
             <DotGrid dotSize={1.5} dotColor="rgba(34, 197, 94, 0.15)" spacing={25} />
-            <SectionGlow position="center" color="#4ADE80" intensity={0.15} />
+            <SectionGlow position="center" color="#06B6D4" intensity={0.15} />
             <div className="container px-4 md:px-6 mx-auto relative z-10">
                 <div className="text-center mb-24">
                     <Badge variant="outline" className="mb-6 text-primary border-primary/20 bg-primary/5 px-4 py-1.5 rounded-full">
@@ -51,7 +51,7 @@ export function Testimonials() {
                             <CardHeader className="p-8 pb-4">
                                 <div className="flex gap-1 mb-6">
                                     {[...Array(5)].map((_, i) => (
-                                        <StarIcon key={i} className="w-4 h-4 fill-[#22C55E] text-[#22C55E]" />
+                                        <StarIcon key={i} className="w-4 h-4 fill-[#06B6D4] text-[#06B6D4]" />
                                     ))}
                                 </div>
                                 <blockquote className="text-lg text-foreground leading-relaxed mb-6 font-medium italic">

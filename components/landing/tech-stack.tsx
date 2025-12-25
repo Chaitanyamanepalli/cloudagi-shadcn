@@ -24,7 +24,7 @@ export default function TechStack() {
     return (
         <section id="tech-stack" className="py-24 bg-background border-t border-white/5 relative overflow-hidden">
             <DotGrid dotSize={1.5} dotColor="rgba(34, 197, 94, 0.15)" spacing={25} />
-            <FloatingShapes count={6} color="#10B981" />
+            <FloatingShapes count={6} color="#06B6D4" />
             <div className="container px-4 md:px-6 mx-auto relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">The Stack</h2>

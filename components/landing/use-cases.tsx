@@ -27,9 +27,19 @@ export function UseCases() {
 
                 <div className="max-w-6xl mx-auto">
                     <Tabs defaultValue="engineering" className="w-full">
-                        <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-16 h-12 p-1 bg-muted/30 border border-border rounded-lg">
-                            <TabsTrigger value="engineering" className="rounded-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm">Engineering</TabsTrigger>
-                            <TabsTrigger value="research" className="rounded-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm">Research</TabsTrigger>
+                        <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-16 h-12 p-1 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+                            <TabsTrigger
+                                value="engineering"
+                                className="rounded-xl text-sm font-semibold transition-all duration-300 data-[state=active]:text-white data-[state=active]:shadow-[0_10px_30px_rgba(34,211,238,0.25)] data-[state=active]:border-white/20 data-[state=active]:bg-[linear-gradient(120deg,#22d3ee_0%,#34d399_50%,#22d3ee_100%)] border border-transparent hover:border-white/10 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                            >
+                                Engineering
+                            </TabsTrigger>
+                            <TabsTrigger
+                                value="research"
+                                className="rounded-xl text-sm font-semibold transition-all duration-300 data-[state=active]:text-white data-[state=active]:shadow-[0_10px_30px_rgba(139,92,246,0.25)] data-[state=active]:border-white/20 data-[state=active]:bg-[linear-gradient(120deg,#8b5cf6_0%,#06b6d4_50%,#8b5cf6_100%)] border border-transparent hover:border-white/10 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                            >
+                                Research
+                            </TabsTrigger>
                         </TabsList>
 
                         <TabsContent value="engineering" className="focus-visible:outline-none">
